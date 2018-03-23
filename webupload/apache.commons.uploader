@@ -31,7 +31,7 @@ public class ApacheUpload{
 					
 					OutputStream out = new FileOutputStream(file);
 					
-					Byte[] buffer = new Byte[512];
+					byte[] buffer = new byte[512];
 					int len = -1;
 					while((len = in.read(buffer)) != -1){
 						out.write(buffer,0,len);
