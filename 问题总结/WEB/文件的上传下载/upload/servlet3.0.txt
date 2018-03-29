@@ -1,0 +1,22 @@
+Part part = new Part("name"); // 根据input框的name属性获得part对象
+
+String name = part.getName();// 获取是input框的name属性
+String mimeType = part.getContentType();//获得上传内容的mime类型
+long size = part.getSize(); //获得上传内容的大小
+String submittedFileName = part.getSubmittedFileName();
+
+String newFileName = UUID.randomUUID().toString()+ name.substring(name.lastindexof("."));
+
+InputStream in = req.getInputStream();
+
+File file = new File("h:/saveDir"){
+	if(!file.exists()){
+		file.mkdir();
+	}
+	
+	OutputStream out = new OutputStream(new File(file,newFileName));
+	
+	IOUtils.copy(in,out);
+	out.flush();
+	out.close();
+	in.close();

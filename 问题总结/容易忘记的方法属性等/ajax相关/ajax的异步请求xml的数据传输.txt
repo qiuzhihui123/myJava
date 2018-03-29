@@ -1,0 +1,32 @@
+获得ajax引擎对象
+
+判断是不是ie浏览器 
+var httpReqeust='';
+if(window.ActiveXObject){httpReqeust= new ActiveXObject("Microsoft.XMLHttp") }
+else{httpReqeust= new XMLHttpReqeust();}
+
+
+
+③httpRequest.responseText
+var xml = httpRequest.responseXML		httpRequest是获取到的ajax引擎的对象，用这个对象获得异步访问的servler返回的文件类型
+
+可能是Text或者XML或者其他，根据他们的mime类型决定
+
+获取到传过来的xml文件后，可以用var userList = xml.getElementsByTagName("user"); 获得userList数组
+
+for循环获得每个user对象，并解析user对象
+
+解析过程：var id = userList[i].getAttribute("id")可以获得一个user的属性
+	  var name = urlList[i].getElementsByTagName("name"); 根据标签名获得user借点的一个子节点返回一个数组，如果该节点中只有一个该子节点，直接用[0]表示该节点
+	  var nameNode = name[0].childNodes[0].nodeValue   childNodes[0]获取一个节点下的所有文本节点，返回数组，只有一个文本节点可以用[0]表示，nodeValue表示该节点的内容
+
+	 var trTag = document.createElement("tr");
+	
+	 var td = document.createElement("td");
+
+ 	 var node = document.createTextNode(内容)
+
+	创建后用节点.append()添加各自添加的html中
+	
+
+	在服务器相应志强应解决中文乱码和添加mime类型   resp.setContentType("text/xml;charset=UTF-8");    resp.setCharacterEncoding("UTF-8");

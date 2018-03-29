@@ -1,0 +1,38 @@
+	File saveDir = new File("h:/save");
+		if(!saveDir.isExists()){
+			saveDir.mkdir();
+		}
+		
+	File tempDir =  new File("h:/temp");
+		if(!tempDir.isExists){
+			tempDir.mkdir();
+		}
+	if(ServletFileUpload.isMultipartContent(req)){
+		DiskFileItemFactory itemFactory = new DiskFileItemFactory();
+		itemFactory.setSizeThreshold(1024);
+		itemFactory.setRepository(temp);
+		
+		ServletFileUpload fileUpload = new ServletFileUpload(itemFactory);
+		fileUpload.setSizeMax(1024*1024*10);
+		
+		List<FileItem> itemList = fileUpload.parseReqeust(req);
+		
+		for(FileItem item : itemList){
+			if(item.isFormField){
+			} else {
+				String name = item.getName();
+				String newFileName = UUID.random().toString() + name.substring(name.lastindexof(".");
+				
+				InputStream in = item.getInputStream();
+				
+				OutputStream out =  new OutputStream(new File(saveDir,newFIleName));
+				
+				IOUtils.copy(in,out);
+				out.flush();
+				out.close();
+				in.close();
+			}
+		}
+		
+	}
+	

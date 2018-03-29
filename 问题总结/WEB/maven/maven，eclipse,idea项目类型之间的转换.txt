@@ -1,0 +1,47 @@
+ECLIPSE第一种导入MAVEN项目的方式
+
+	在命令提示符中的项目根文件夹中，使用
+	maven 转eclipse     mvn eclipse:eclipse指令，
+	eclipse转maven      mvn eclipse:clean指令
+
+	maven转idea        mvn idea:idea
+	idea转maven        mvn idea:clean指令
+
+	然后在eclipse中用import导入
+
+ECLIPSE第二种导入MAVEN项目的方式
+
+	在eclipse中直接导入maven选项，选选择existing maven project
+
+
+
+	在eclipse中使用maven的注意事项，
+
+	首先要在Preferences的maven选项中设置installation把默认的内置的maven插件改为新版本的导入并打勾
+
+	其次，在usersetting中修改settings.xml的路径，并自动修改repositories的储存路径，不然还是会下载到默认的c盘
+
+
+在ECLIPSE中创建MAVEN项目
+	点击创建-->maven-->mavenproject-->点next-->选择骨架se（quickstart）和ee（webapp）各有不同，
+	
+	创建ee的maven项目开始index.jsp会报错，之所以能使用jsp，servlet，要依赖servlet-api的jar包
+		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>3.1.0</version>
+		
+		
+	
+	
+	
+	
+	在pom.xml中配置依赖包，在denpendencies下面创建一个denpendency
+														groupId   
+			这些可以在mvnrepository网址中找到			artifactId
+														version
+														scope
+	
+	
+	
+	
+

@@ -1,0 +1,1 @@
+Enemeration 在servlet的init初始化中getInitialParameter()方法中会返回一个Enumeration对象

@@ -1,0 +1,4 @@
+ÓÃjoda-time¿Ø¼þ
+
+DateTime dateTime = new DateTime(getFinishTime());
+		return dateTime.isBeforeNow();

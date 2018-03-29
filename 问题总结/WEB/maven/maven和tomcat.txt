@@ -1,0 +1,15 @@
+在maven中配置tomcat插件，后tomcat的servlet配置会和先前编译用的servlet冲突，所以要在先前配置的servlet
+节点中增加一个scope借点内容是provided意思是只在编译时候使用，如果是test就是只在测试时候使用
+
+在项目中导入tomcat插件
+<plugin>
+	<groupId>org.apache.tomcat.maven</groupId>
+	<artifactId>tomcat7-maven-plugin</artifactId>
+	<version>2.2</version>
+	<configuration>
+		<port>80</port>
+		<path>/</path>
+	</configuration>
+</plugin> 
+需要修改默认的libraries此时的默认jdk版本是1.5需要在project factes中设置java为1.8
+

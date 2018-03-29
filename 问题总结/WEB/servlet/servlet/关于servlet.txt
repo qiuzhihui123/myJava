@@ -1,0 +1,88 @@
+上午
+
+（一）servlet的继承体系
+
+1.	自定义的servlet类继承自HttpServlet（抽象类），HttpServlet继承自GenericServlet（抽象类）
+
+2.	GenericServlet实现了Servlet接口，它里面定义的有getServletConfig方法返回一个ServletConfig对象
+
+3.	GenericServlet实现了ServletConfig接口它里面定义的有getInitParameter()和getInitParameterNames()方法,
+	他们返回的对象分别是String和Enumeration 的对象，Enumeration对象可以通过while（en.hasNextElement）{
+	String str = en.nextElement()｝迭代输出，在web.xml中配置的init-param标签中的键值对的键，根据键使用
+	config.getInitParameter()
+
+
+
+（二）servlet的执行过程：
+1.	客户端发起一个请求（/servlet的url-pattern）
+
+2.	servlet容器（tomcat）接收到请求后，创建两个HttpServletRequestWrapper和HttpServletResponseWrapper
+的对象
+
+3.	servlet容器根据url-pattern从web.xml的配置中根据所配置的相同的servlet-name的servlet-class，的完全
+限定名，分配线程去访问，利用反射机制创建出该servlet的对象。
+
+4.	调用该对象的service方法，将刚开始创建的两个wrapper对象传入，service方法，在service方法中调用request
+的getMethod()方法，与该类中定义的常量比较，如果等于get，则再调用doGet()方法，将这两个对象传过去
+
+5.	执行完doGet方法后，服务器销毁这两个对象和分配的线程资源。
+
+
+
+（三）servlet的生命周期
+
+	servlet对象只会被创建一次，创建的时间是，在第一次发起请求时，需要执行service方法，或者是在web.xml
+	配置文件中配置，servlet标签下的load-on-startup标签，标签内容给一个正数或者0，根据每个servlet标签配
+	置的初始创建的标签的值越小，会越先被创建，如果，值相同则从上倒下按顺序被创建，由于servlet对象只会
+	被创建一次，所以，在同一时间，多个线程对该对象的同一个属性调用时候会发生不安全，尽量使用无状态
+	（对象作为方法的属性），有状态的（变量作为属性）可以写出synchronized（this.属性）代码块中
+
+
+init：
+	初始化，在创建servlet对象之前，需要进行初始化，为了解决硬编码，在web.xml的servlet标签中配置
+	init-param>param-name>或者param-value>键值对，在init的两个重载的方法中，利用ServletConfig的对象进行
+	获取，ServletConfig config = getServletConfig方法返回一个ServletConfig对象该方法是servlet中的方法，
+	String name = config.getInitParameter("")或者Enumeration en = config.getInitParameterNames();获得
+	一个en对象，再使用while循环en.hasNextElement()，en.nextElement()进行获取键值，再根据键值，用config.
+	getIntiParameter()方法获得到它对应的value值
+	
+实例化：
+	（构造方法）容器启动，在web.xml中配置load-on-startup，直接创建，或者第一次访问时候创建
+
+服务：service
+	在创建之后如果多次访问，则会多次执行。
+	
+销毁：destroy
+	容器关闭后会自动销毁	
+
+
+	
+	
+	
+下午
+
+
+（一）四种存储的对象
+	
+	pageContext：只存在一个页面
+	
+	HttpServletRequest ：存在一次请求访问中  内置对象request
+	
+	Session ：存在一次会话期间   			 内置对象session	
+	在servlet中获得对象的方式： HttpSession session = req.getSession()
+	
+	ServletContext ：存在整个容器的运行期间  内置对象application 
+	在servlet中获得对象的方式 ServletContext sc = getServletContext()或者session.getServletContext
+	或者req.getServletContext()
+	
+	
+（二）El(Expression language)表达式语言
+	1.需要导入El包可以简化对变量和对象的访问，tomcat里默认就有El包。
+
+	2.不用在<%%>写java代码去获取到存储空间的值了，直接用${application.scope.变量名称}
+	如果是对象，则${键名.对象中的属性名}它的获取过程是，调用了该对象的对应属性的get方法获取到了该属性
+	
+
+
+
+

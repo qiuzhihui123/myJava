@@ -1,0 +1,23 @@
+先引入jquery.js包，再引入validate包，使用形式是 找到表单对象调用validate函数，传入一个i额
+
+$(".addForm").validate({
+				error-class:
+				error:
+				rules{
+					各个input框的name值:{
+						required:true,
+						rangelength:[],
+						minlength:
+						equalTo:true,
+						email:true,
+					}
+				},
+				
+				messages{
+					对应的input框的name值:{
+						required:"显示的内容"
+						
+					
+					}
+				}
+			})

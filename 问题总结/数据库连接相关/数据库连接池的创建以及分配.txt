@@ -1,0 +1,37 @@
+数据库连接池的接口为DataSource
+
+在这里我们使用时候需要用到apache的commons项目中的dbcp jar包 database connection pool
+而dbcp需要依赖pool jar包，pool需要依赖logging jar包
+
+使用jar包：
+
+	创建一个静态的只有一份的BasiDataSource的对象dataSource，对这个对象进行设置驱动，url，username，password这些都是数据库连接池需要连接的数据库依赖，还需要设置初始容量，高峰期最大容量，最小容量，以及最长的等待时间，分别是 dataSource.setInitialSize(),dataSource.setMaxIdle();dataSource.setMinIdle(),dataSource.setMaxWaitMillis();
+
+设置好这些，就创建了一个初始连接数为5的一个数据库连接池。
+
+配置数据库依赖的时候为了避免复杂的修改硬编码的情况需要把这些依赖地址写入配置文件中，在src下创建一个叫resources的文件夹，创建一个文件名为config.properties的配置文件
+
+配置文件中的格式为：
+	jdbc.driver=com.mysql.jdbc.Driver
+	jdbc.url=jdbc:mysql:///db_255
+	jdbc.username=root
+	jdbc.password=929813
+没有引号，不可以有空格
+
+在ConnectionManager中读取时候需要创建一个来自java.util.的Properties类的对象它是HashTable的子类，map接口的一个实现类对象可以根据键获得对应的值Properties prop = new Properties()
+driver = prop.getProperty("jdbc.driver")
+url= prop.getProperty("jdbc.url")
+username=prop.getProperty("jdbc.username")
+password=prop.getProperty("jdbc.password")
+
+
+获得一个连接使用 dataSource.getConnection();
+
+在QueryRunner 的构造方法中传入一个DataSource 的实现类对象;
+
+	QueyRunner runner = new QueryRunner(ConnectionManager.dataSource);
+
+	此时runner会调用父类AbstractQueryRunner 中的带有DataSource 参数列表的构造方法，在父类中会把这个DataSource的实现类对象赋值给一个属性，然后提供一个get方法，可供其他方法调用该属性，在query执行executeUpdate或者Query时候就会判断是否有数据库连接池，如果有，就调用这个get方法，获得一个DataSource实现类对象，用这个对象的getConnection()方法获得一个connection。再将这个连接conn，sql语句，params传入方法中去数据库增删改查
+就会用这个对象的
+
+

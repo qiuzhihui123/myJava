@@ -1,0 +1,1 @@
+首先try代码块里面写的是可能会发生异常的代码，如果在执行这些代码的途中（这个途中可能是在调用了其他类的一些方法），在其他类你进行了一个判断如果满足这个判断，你throw 了一个exception，这个exception是Exception及其子类，需要你new出来，在catch代码块中就会捕获到这个异常，这时候就会执行catch中的语句，你可以在new Exception(),括号中给他传一个String message，或者Throwable th ，这些都是构造方法的重载，你传入一个message这时候你new出来的对象的message属性就会被赋值你传入的String message的 内容，可以用这个对象.message获得你要用这些信息给出的提示

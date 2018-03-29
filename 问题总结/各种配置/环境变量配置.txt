@@ -1,0 +1,10 @@
+C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;E:\jdk\bin;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\apache-maven-3.5.2-bin\apache-maven-3.5.2\bin
+
+
+jdk : path 粘贴jdk的bin目录
+
+tomcat : JAVA_HOME 粘贴JDK的根目录，需要依赖jdk
+
+mysql : path中粘贴mysql 的bin目录
+
+maven ：path中粘贴maven的bin目录，创建M2_HOME 并粘贴maven根目录

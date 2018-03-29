@@ -1,0 +1,4 @@
+①encodeURIComponent（Sting 字符串）  对uri的一些组成部分进行encode编码加密
+
+
+		

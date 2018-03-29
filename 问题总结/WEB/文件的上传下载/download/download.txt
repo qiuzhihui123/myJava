@@ -1,0 +1,22 @@
+<a href='/download?fileName=1.jpg&name=ÎÒµÄÍ¼Æ¬.jpg'></a>
+
+
+String fileName = req.getParameter("fileName");
+String name = req.getParameter("name");
+
+
+File file = new File("h:/save",fileName);
+
+InputStream in = new FileInputStream(file);
+
+if(StringUtils.isNotEmpty(name)){
+	resp.setContentType("application/octet-stream");
+	resp.setContentLengthLong(file.length());
+	name = new String(name.getBytes("UTF-8"),"ISO8859-1");
+	resp.addHeader("Content-Disposition","attachment;fileName=\"" + name + "\"");
+}
+
+
+OutputStream out = resp.getOutputStream();
+
+IOUtils.copy(in,out);

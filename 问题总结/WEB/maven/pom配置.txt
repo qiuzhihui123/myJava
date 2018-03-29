@@ -1,0 +1,24 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<project  xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.qiuhui.app</groupId>  		组织或者公司域名倒置
+<artifactId>my-app</artifactId>    	项目名称
+<version>1.0-SNAPSHOT</version>		版本号
+				快照，意思为测试中
+					以上三个可以称之为坐标，在maven中可以找到这个项目
+</project>
+
+				所有的jar包可以存储的位置，中央仓库https://repo.maven.apache.org
+				，国内镜像，私有仓库，本地仓库
+				在上传到仓库时会有审核，通过之后才可以上传
+				
+	mvn archetype:generate
+	在输出的交互式命令中输入坐标即可创建
+	或
+	mvn archetype:generate -DgroupId=com.kaishengit.pms -DartifactId=myapp2 -Dversion=1.0.0-SNAPSHOT
+	
+	
+	

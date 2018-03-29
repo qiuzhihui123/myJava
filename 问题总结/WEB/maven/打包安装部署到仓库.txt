@@ -1,0 +1,3 @@
+使用mvn clean compile package一系列命令打包好包后，使用mvn install安装到本地仓库，
+或者使用mvn 
+deploy部署到私服

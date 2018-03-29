@@ -1,0 +1,36 @@
+运行时异常
+
+NullPointerException  空指针
+ArrayIndexOutofBoundsException  数组下标越界
+ClassCastException   类型强转换失败
+NumberFormatException  String非内容基本数据类型，转基本数据类型失败
+NoSuchElementException  没有该元素
+NoSuchArgumentException 没有该参数
+NoSuchMethodException   找不到该方法
+
+
+
+
+
+
+
+非运行时异常
+
+java.lang.NoSuchMethodException  无法找到某一特定方法时，抛出该异常。
+java.lang.ClassNotFoundException 无法找到某一特定类时
+
+
+
+
+
+
+
+
+ERROR
+
+java.lang.NoSuchFiledError   如果应用程序试图访问或修改一个指定的对象字段，而该对象不再包含该字段时，抛出该异常。通常由编译器捕获该错误；仅当类定义发生不相容的更改时，在运行时才会发生该错误。 
+
+java.lang.NoSuchMethodError  如果应用程序试图访问或修改一个指定的对象字段，而该对象不再包含该字段时，抛出该异常。通常由编译器捕获该错误；仅当类定义发生不相容的更改时，在运行时才会发生该错误。
+
+
+

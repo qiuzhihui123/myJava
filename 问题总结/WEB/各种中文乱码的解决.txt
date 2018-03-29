@@ -1,0 +1,9 @@
+解决post请求的乱码：req.setCharacterEncoding("UTF-8")
+解决post相应的乱码：resp.setCharacterEncoding("UTF-8")
+
+解决get请求的乱码
+get请求一般是由浏览器进行encode编码，可能会有不自动编码的情况，最好在url发送前使用encodeURIComponent()
+方法
+name = new String(name.getBytes("ISO8859-1"),"UTF-8")
+
+get请求会在

@@ -1,0 +1,23 @@
+
+apache.org
+https://emmet.io/ 下载eclipse插件
+
+eclipse
+
+bootcss
+
+icons 小图标
+getbootstrap
+
+jquery123 中文网
+
+flatuicolors 选颜色网站
+
+github.com/js-cookie               cookie的js获取下载网址
+
+apache的commons项目中的codec中的bin.zip     加密库下载
+
+code/coogle--			谷歌的代码托管平台的crypto.js
+
+
+https://adminlte.io/        项目html打包
