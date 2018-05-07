@@ -1,0 +1,11 @@
+chrome：  
+	
+    JsonView 预览json数据时候格式化json数据   github项目托管
+    octotree 将github中的项目以目录形式展示
+
+
+idea:
+   alibaba 代码规范
+   jrebel  不用重启服务器可以直接修改代码
+    
+
